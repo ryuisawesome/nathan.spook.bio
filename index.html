@@ -3,97 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            background-color: white;
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 90%;
-        }
-        
-        .ip-address {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 20px 0;
-            color: #333;
-        }
-        
-        .close-btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .close-btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>-_-</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="ipModal" class="modal">
-        <div class="modal-content">
-            <h2>Your IP Address</h2>
-            <div class="ip-address" id="ipAddress">Loading...</div>
-            <button class="close-btn" id="closeModal">Close</button>
+    <div class="hamburger-card">
+        <div class="top-bun"></div>
+        
+        <div class="profile-section">
+            <div class="profile-pic">
+                <img src="https://images-ext-1.discordapp.net/external/IRJRlToUr1tghPWAOt32BRgxEf8pwzZ8JcbTfHnn5pk/%3Fsize%3D4096/https/cdn.discordapp.com/avatars/1352995832164520029/a4d7fd548fc2fc8a8b32de56b6f82621.png?format=webp&quality=lossless" alt="Profile Picture">
+            </div>
+            <h1 class="name">nathan</h1>
+            <p class="title">dev @ shapes.lol</p>
         </div>
+        
+        <div class="middle-section">
+            <div id="spotify-content">
+                <div class="loading">Loading Spotify data...</div>
+            </div>
+        </div>
+        
+        <div class="bottom-bun"></div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('ipModal');
-            const ipAddressElement = document.getElementById('ipAddress');
-            const closeButton = document.getElementById('closeModal');
-            
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    ipAddressElement.textContent = data.ip;
-                })
-                .catch(error => {
-                    ipAddressElement.textContent = 'Unable to fetch IP';
-                    console.error('Error fetching IP:', error);
-                });
-            
-            closeButton.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
