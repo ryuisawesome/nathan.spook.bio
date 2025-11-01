@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 20px;
-    background-color: #1a1a1a;
+    background: radial-gradient(circle at center, #2a2a2a 0%, #1a1a1a 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,30 +11,35 @@ body {
     min-height: 100vh;
     font-family: Arial, sans-serif;
     gap: 20px;
-    cursor: none;
+    cursor: default;
     overflow: hidden;
+    position: relative;
 }
 
-.custom-cursor {
+.spotlight {
     position: fixed;
-    width: 8px;
-    height: 8px;
-    background-color: white;
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-    mix-blend-mode: difference;
+    background: radial-gradient(
+        circle 100px at 0% 0%,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 20%,
+        transparent 50%
+    );
+    z-index: -1;
+    transition: background 0.1s ease;
     opacity: 1;
-    transition: opacity 0.3s ease;
 }
 
-.custom-cursor.hidden {
+.spotlight.hidden {
     opacity: 0;
 }
 
 .card {
-    background-color: #2d2d2d;
+    background-color: rgba(45, 45, 45, 0.8);
     border-radius: 12px;
     padding: 20px;
     display: flex;
@@ -43,6 +48,14 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 100%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
 .profile-picture {
@@ -51,7 +64,12 @@ body {
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
-    border: 3px solid #444;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: border-color 0.3s ease;
+}
+
+.profile-picture:hover {
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .profile-picture video {
@@ -70,6 +88,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .status {
@@ -79,7 +98,7 @@ body {
 }
 
 .music-player {
-    background-color: #2d2d2d;
+    background-color: rgba(45, 45, 45, 0.8);
     border-radius: 12px;
     padding: 20px;
     display: flex;
@@ -88,6 +107,14 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 100%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-player:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
 .album-art {
@@ -96,6 +123,11 @@ body {
     border-radius: 8px;
     overflow: hidden;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.album-art:hover {
+    transform: scale(1.05);
 }
 
 .album-art img {
@@ -115,6 +147,7 @@ body {
     color: white;
     font-size: 14px;
     font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .progress-container {
@@ -127,18 +160,24 @@ body {
 .progress-bar {
     flex: 1;
     height: 4px;
-    background-color: #444;
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 2px;
     position: relative;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.progress-bar:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .progress {
     position: absolute;
     height: 100%;
-    background-color: white;
+    background: linear-gradient(90deg, #1DB954, #1ed760);
     border-radius: 2px;
     width: 0%;
+    transition: width 0.1s ease;
 }
 
 .progress-handle {
@@ -150,11 +189,13 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .progress-bar:hover .progress-handle {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
 }
 
 .time-display {
@@ -172,44 +213,49 @@ body {
 }
 
 .control-button {
-    background: none;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     color: #cccccc;
     font-size: 16px;
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     width: 35px;
     height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(10px);
 }
 
 .control-button:hover {
     color: white;
-    background-color: #3a3a3a;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
 }
 
 .control-button.active {
     color: #1DB954;
+    background: rgba(29, 185, 84, 0.2);
 }
 
 .play-button {
-    background-color: white;
+    background: white;
     color: #1a1a1a;
     width: 40px;
     height: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .play-button:hover {
-    background-color: #f0f0f0;
+    background: #f0f0f0;
     color: #1a1a1a;
+    transform: scale(1.1);
 }
 
 .social-section {
-    background-color: #2d2d2d;
+    background-color: rgba(45, 45, 45, 0.8);
     border-radius: 12px;
     padding: 15px 20px;
     display: flex;
@@ -219,29 +265,29 @@ body {
     max-width: 400px;
     width: 100%;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     justify-content: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .social-section:hover {
-    background-color: #363636;
+    background-color: rgba(54, 54, 54, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
 .discord-logo, .roblox-logo, .spotify-logo, .github-logo {
     width: 30px;
     height: 30px;
     flex-shrink: 0;
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.discord-logo:hover, .roblox-logo:hover, .spotify-logo:hover, .github-logo:hover {
-    transform: scale(1.1);
-}
-
-.discord-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.discord-logo {
+    border-radius: 8px;
 }
 
 .roblox-logo {
@@ -249,14 +295,23 @@ body {
     overflow: hidden;
 }
 
+.spotify-logo, .github-logo {
+    border-radius: 8px;
+}
+
+.discord-logo:hover, .roblox-logo:hover, .spotify-logo:hover, .github-logo:hover {
+    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.discord-logo img, .spotify-logo img, .github-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .roblox-logo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.spotify-logo img, .github-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
 }
