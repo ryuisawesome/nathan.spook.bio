@@ -7,24 +7,71 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hamburger-card">
-        <div class="top-bun"></div>
-        
-        <div class="profile-section">
-            <div class="profile-pic">
-                <img src="https://images-ext-1.discordapp.net/external/IRJRlToUr1tghPWAOt32BRgxEf8pwzZ8JcbTfHnn5pk/%3Fsize%3D4096/https/cdn.discordapp.com/avatars/1352995832164520029/a4d7fd548fc2fc8a8b32de56b6f82621.png?format=webp&quality=lossless" alt="Profile Picture">
-            </div>
+    <div class="custom-cursor"></div>
+
+    <audio id="audioPlayer">
+        <source src="https://github.com/ryuisawesome/nathan.spook.bio/raw/refs/heads/main/Foreign.mp4" type="audio/mp4">
+    </audio>
+
+    <div class="card">
+        <div class="profile-picture">
+            <video autoplay loop muted playsinline>
+                <source src="https://images-ext-1.discordapp.net/external/GLRjmxnz7MnBibd9VrtmRxH8cFhBlZM3eRA6j__PYkY/https/media.tenor.com/gA3nv4x0nh0AAAPo/cat-grumpy.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="profile-info">
             <h1 class="name">nathan</h1>
-            <p class="title">dev @ shapes.lol</p>
+            <p class="status">studying cat technology..</p>
         </div>
-        
-        <div class="middle-section">
-            <div id="spotify-content">
-                <div class="loading">Loading Spotify data...</div>
+    </div>
+
+    <div class="music-player">
+        <div class="album-art">
+            <img src="https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194" alt="Album Art">
+        </div>
+        <div class="player-controls">
+            <div class="song-info">Foreign</div>
+            <div class="progress-container">
+                <div class="time-display" id="currentTime">0:00</div>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress" id="progress"></div>
+                    <div class="progress-handle" id="progressHandle"></div>
+                </div>
+                <div class="time-display" id="totalTime">0:00</div>
+            </div>
+            <div class="controls-row">
+                <button class="control-button" id="repeatButton">
+                    <i class="fas fa-redo"></i>
+                </button>
+                <button class="control-button" id="rewindButton">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="control-button play-button" id="playButton">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="control-button" id="forwardButton">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+                <button class="control-button" id="shuffleButton">
+                    <i class="fas fa-random"></i>
+                </button>
             </div>
         </div>
-        
-        <div class="bottom-bun"></div>
+    </div>
+
+    <div class="social-section">
+        <a href="https://discord.com/users/1352995832164520029" class="discord-logo">
+            <img src="https://github.com/our-websites/cdn.shapes.lol/blob/main/discord/logo.png?raw=true" alt="Discord Logo">
+        </a>
+        <a href="https://www.roblox.com/users/9085000000/profile" class="roblox-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Roblox_Logo_2025.png" alt="Roblox Logo">
+        </a>
+        <a href="https://open.spotify.com/user/31i3bgergg2qy7hmbzxnsfxysicm" class="spotify-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify Logo">
+        </a>
+        <a href="https://github.com/ryuisawesome" class="github-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/800px-GitHub_Invertocat_Logo.svg.png" alt="GitHub Logo">
+        </a>
     </div>
 
     <script src="script.js"></script>
