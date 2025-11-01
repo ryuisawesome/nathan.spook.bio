@@ -1,0 +1,262 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    gap: 20px;
+    cursor: none;
+    overflow: hidden;
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.custom-cursor.hidden {
+    opacity: 0;
+}
+
+.card {
+    background-color: #2d2d2d;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+}
+
+.profile-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3px solid #444;
+}
+
+.profile-picture video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.status {
+    color: #cccccc;
+    font-size: 16px;
+    margin: 5px 0 0 0;
+}
+
+.music-player {
+    background-color: #2d2d2d;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+}
+
+.album-art {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.album-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.song-info {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.progress-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background-color: #444;
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+.progress {
+    position: absolute;
+    height: 100%;
+    background-color: white;
+    border-radius: 2px;
+    width: 0%;
+}
+
+.progress-handle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.progress-bar:hover .progress-handle {
+    opacity: 1;
+}
+
+.time-display {
+    color: #cccccc;
+    font-size: 12px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.control-button {
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-button:hover {
+    color: white;
+    background-color: #3a3a3a;
+}
+
+.control-button.active {
+    color: #1DB954;
+}
+
+.play-button {
+    background-color: white;
+    color: #1a1a1a;
+    width: 40px;
+    height: 40px;
+}
+
+.play-button:hover {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
+
+.social-section {
+    background-color: #2d2d2d;
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+}
+
+.social-section:hover {
+    background-color: #363636;
+}
+
+.discord-logo, .roblox-logo, .spotify-logo, .github-logo {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.discord-logo:hover, .roblox-logo:hover, .spotify-logo:hover, .github-logo:hover {
+    transform: scale(1.1);
+}
+
+.discord-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.roblox-logo {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.roblox-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.spotify-logo img, .github-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
