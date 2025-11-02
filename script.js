@@ -14,13 +14,19 @@ const playlist = [
         title: "Foreign",
         src: "https://github.com/ryuisawesome/nathan.spook.bio/raw/refs/heads/main/Foreign.mp4",
         albumArt: "https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194",
-        duration: 142
+        duration: 142 
     },
     {
         title: "PURPLE RAIN",
         src: "https://github.com/ryuisawesome/nathan.spook.bio/raw/refs/heads/main/PURPLE%20RAIN%20-%20NOVAGANG.mp3",
         albumArt: "https://t2.genius.com/unsafe/344x344/https%3A%2F%2Fimages.genius.com%2F362a49650e5187261b6ad232c91ff8b6.1000x1000x1.png",
-        duration: 114
+        duration: 114 
+    },
+    {
+        title: "oh noo :( (Demo)",
+        src: "https://github.com/ryuisawesome/nathan.spook.bio/raw/refs/heads/main/star%20-%20oh%20no%20(unmixxed)%20(1).mp3",
+        albumArt: "https://i.imgur.com/bJByU7P.jpeg",
+        duration: 124
     }
 ];
 
@@ -97,7 +103,13 @@ function loadSong(index) {
 }
 
 audio.addEventListener('loadedmetadata', function() {
-    document.getElementById('totalTime').textContent = formatTime(playlist[currentSongIndex].duration);
+    const actualDuration = audio.duration;
+    if (actualDuration && !isNaN(actualDuration)) {
+        playlist[currentSongIndex].duration = actualDuration;
+        document.getElementById('totalTime').textContent = formatTime(actualDuration);
+    } else {
+        document.getElementById('totalTime').textContent = formatTime(playlist[currentSongIndex].duration);
+    }
 });
 
 audio.addEventListener('timeupdate', function() {
@@ -163,7 +175,6 @@ function prevSong() {
 
 function nextSong() {
     if (isShuffling) {
-        // Random song excluding current one
         let newIndex;
         do {
             newIndex = Math.floor(Math.random() * playlist.length);
