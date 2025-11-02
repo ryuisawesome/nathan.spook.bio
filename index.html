@@ -18,9 +18,7 @@
 <body>
     <div class="spotlight"></div>
 
-    <audio id="audioPlayer">
-        <source src="https://github.com/ryuisawesome/nathan.spook.bio/raw/refs/heads/main/Foreign.mp4" type="audio/mp4">
-    </audio>
+    <audio id="audioPlayer"></audio>
 
     <div class="card">
         <div class="profile-picture">
@@ -36,10 +34,10 @@
 
     <div class="music-player">
         <div class="album-art">
-            <img src="https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194" alt="Album Art">
+            <img id="albumArt" src="https://i.scdn.co/image/ab67616d0000b273a1e867d40e7bb29ced5c0194" alt="Album Art">
         </div>
         <div class="player-controls">
-            <div class="song-info">Foreign</div>
+            <div class="song-info" id="songTitle">Foreign</div>
             <div class="progress-container">
                 <div class="time-display" id="currentTime">0:00</div>
                 <div class="progress-bar" id="progressBar">
@@ -52,13 +50,13 @@
                 <button class="control-button" id="repeatButton">
                     <i class="fas fa-redo"></i>
                 </button>
-                <button class="control-button" id="rewindButton">
+                <button class="control-button" id="prevButton">
                     <i class="fas fa-step-backward"></i>
                 </button>
                 <button class="control-button play-button" id="playButton">
                     <i class="fas fa-play"></i>
                 </button>
-                <button class="control-button" id="forwardButton">
+                <button class="control-button" id="nextButton">
                     <i class="fas fa-step-forward"></i>
                 </button>
                 <button class="control-button" id="shuffleButton">
